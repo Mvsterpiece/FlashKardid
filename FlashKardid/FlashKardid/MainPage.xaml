@@ -5,7 +5,7 @@
 
     <StackLayout>
         <Label Text="FlashKardid" FontSize="Large" HorizontalTextAlignment="Center"/>
-        <Button Text="Tekil" Clicked="OnDecksClicked"/>
+        <Button Text="Sõnavarad" Clicked="OnDecksClicked"/>
         <Button Text="Sõnad" Clicked="OnWordsClicked"/>
     </StackLayout>
 
