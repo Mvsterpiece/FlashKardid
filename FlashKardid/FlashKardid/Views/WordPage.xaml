@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlashKardid.Views.WordPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Word.Name}" />
+            <Entry Text="{Binding Word.Description}" />
+            <Entry Text="{Binding Word.Difficulty}" />
+            <Switch IsToggled="{Binding Word.IsMastered}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

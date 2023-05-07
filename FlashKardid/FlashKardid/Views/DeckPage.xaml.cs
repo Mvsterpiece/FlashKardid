@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace FlashKardid.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Deck : ContentPage
-	{
-		public Deck ()
-		{
-			InitializeComponent ();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class DeckPage : ContentPage
+    {
+        public DeckPage()
+        {
+            InitializeComponent();
+        }
+    }
 }

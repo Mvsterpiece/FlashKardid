@@ -17,14 +17,5 @@ namespace FlashKardid
             InitializeComponent();
 
         }
-        private async void OnDecksClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new NavigationPage(new Deck()));
-        }
-
-        private async void OnWordsClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new NavigationPage(new Words()));
-        }
     }
 }

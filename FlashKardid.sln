@@ -5,7 +5,12 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashKardid.Android", "FlashKardid\FlashKardid.Android\FlashKardid.Android.csproj", "{2F6DC9F0-7B06-4A63-AE6E-7CAFF95C72A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashKardid", "FlashKardid\FlashKardid\FlashKardid.csproj", "{11BEF1FB-7926-4591-92BB-EFB3A5073AA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashKardid", "FlashKardid\FlashKardid\FlashKardid.csproj", "{11BEF1FB-7926-4591-92BB-EFB3A5073AA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{048B9997-F896-438D-BE03-AA7EA9290BA2}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
