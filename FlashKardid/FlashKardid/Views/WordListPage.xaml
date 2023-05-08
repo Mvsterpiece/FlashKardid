@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FlashKardid.Views.WordPage">
+             x:Class="FlashKardid.Views.WordLisatPage">
     <ContentPage.Resources>
+        <Style TargetType="ListView">
+            <Setter Property="BackgroundColor" Value="#F5F5F5" />
+            <Setter Property="Margin" Value="10,20,10,0" />
+        </Style>
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="#383838" />
             <Setter Property="FontSize" Value="18" />
@@ -19,16 +23,23 @@
             <Setter Property="VerticalOptions" Value="CenterAndExpand" />
             <Setter Property="HorizontalOptions" Value="Center" />
         </Style>
-    </ContentPage.Resources>
+        </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Sõna"></Label>
-            <Entry Text="{Binding Name}"></Entry>
-            <StackLayout>
-                <Button Text="Salvesta" Clicked="SaveWord"></Button>
-                <Button Text="Kustuta" Clicked="DeleteWord"></Button>
-                <Button Text="Katkesta" Clicked="Cancel"></Button>
-            </StackLayout>
+            <ListView x:Name="wordsList" ItemsSource="{Binding}" ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" FontSize="Medium"></Label>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Lisa" Clicked="CreateWord"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

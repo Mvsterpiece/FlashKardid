@@ -6,9 +6,7 @@ namespace FlashKardid.Models
 {
     public class Deck
     {
-        public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public int Difficulty { get; set; }
+        public List<Word> Words { get; set; }
     }
 }

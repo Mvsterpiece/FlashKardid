@@ -15,7 +15,17 @@ namespace FlashKardid
         public MainPage()
         {
             InitializeComponent();
+        }
 
+
+        private async void WordList(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new WordLisatPage());
+        }
+
+        private async void CollectionWords(object sender, EventArgs e)
+        {
+            
         }
     }
 }

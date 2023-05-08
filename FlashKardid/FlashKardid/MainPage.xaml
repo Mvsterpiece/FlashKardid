@@ -2,11 +2,28 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlashKardid.MainPage">
-
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#383838" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Margin" Value="10,5,0,5" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#007AFF" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="WidthRequest" Value="100" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="Margin" Value="10,20,10,10" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
     <StackLayout>
-        <Label Text="FlashKardid" FontSize="Large" HorizontalTextAlignment="Center"/>
-        <Button Text="Sõnavarad" Clicked="OnDecksClicked"/>
-        <Button Text="Sõnad" Clicked="OnWordsClicked"/>
+        <Label Text="Flash-kardid"></Label>
+        <Button Text="Sõnad" Clicked="WordList"></Button>
+        <Button Text="Sõnavarad" Clicked="CollectionWords"></Button>
     </StackLayout>
 
 </ContentPage>
