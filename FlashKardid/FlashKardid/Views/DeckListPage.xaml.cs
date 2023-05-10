@@ -1,4 +1,5 @@
 ﻿using FlashKardid.Models;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,17 @@ using Xamarin.Forms.Xaml;
 namespace FlashKardid.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WordLisatPage : ContentPage
+    public partial class DeckListPage : ContentPage
     {
-        public WordLisatPage()
+        public DeckListPage()
         {
             InitializeComponent();
+
         }
+
         protected override void OnAppearing()
         {
-            wordsList.ItemsSource = App.Database.GetItems();
+            decksList.ItemsSource = App.Database.GetItems();
             base.OnAppearing();
         }
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -29,12 +32,14 @@ namespace FlashKardid.Views
             friendPage.BindingContext = selectedFriend;
             await Navigation.PushAsync(friendPage);
         }
-        private async void CreateDeck(object sender, EventArgs e)
+        private async void CreateWord(object sender, EventArgs e)
         {
             Word friend = new Word();
             WordPage friendPage = new WordPage();
             friendPage.BindingContext = friend;
             await Navigation.PushAsync(friendPage);
         }
+
+
     }
 }

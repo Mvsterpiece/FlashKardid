@@ -14,6 +14,7 @@ namespace FlashKardid
     {
         public const string DATABASE_NAME = "words.db";
         public static WordRepository database;
+
         public static WordRepository Database
         {
             get
@@ -27,6 +28,9 @@ namespace FlashKardid
                 return database;
             }
         }
+
+
+
 
         public App()
         {
