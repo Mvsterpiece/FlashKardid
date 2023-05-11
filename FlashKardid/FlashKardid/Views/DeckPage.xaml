@@ -4,9 +4,8 @@
              x:Class="FlashKardid.Views.DeckPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="deckNameEntry" Placeholder="Sisesta sõnavara nimetus" />
+            <Button Text="Lisada" Clicked="CreateButton_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

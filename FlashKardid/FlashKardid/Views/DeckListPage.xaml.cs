@@ -17,27 +17,29 @@ namespace FlashKardid.Views
         public DeckListPage()
         {
             InitializeComponent();
-
         }
 
         protected override void OnAppearing()
         {
-            decksList.ItemsSource = App.Database.GetItems();
+            if (App.DeckDatabase != null)
+            {
+                decksList.ItemsSource = App.DeckDatabase.GetItems();
+            }
             base.OnAppearing();
         }
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Word selectedFriend = (Word)e.SelectedItem;
-            WordPage friendPage = new WordPage();
-            friendPage.BindingContext = selectedFriend;
-            await Navigation.PushAsync(friendPage);
+            Deck selectedDeck= (Deck)e.SelectedItem;
+            DeckPage deckPage = new DeckPage();
+            deckPage.BindingContext = selectedDeck;
+            await Navigation.PushAsync(deckPage);
         }
-        private async void CreateWord(object sender, EventArgs e)
+        private async void CreateDeck(object sender, EventArgs e)
         {
-            Word friend = new Word();
-            WordPage friendPage = new WordPage();
-            friendPage.BindingContext = friend;
-            await Navigation.PushAsync(friendPage);
+            Deck deck = new Deck();
+            DeckPage deckPage = new DeckPage();
+            deckPage.BindingContext = deck;
+            await Navigation.PushAsync(deckPage);
         }
 
 

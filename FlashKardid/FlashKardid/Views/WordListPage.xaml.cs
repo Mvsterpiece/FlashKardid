@@ -24,17 +24,17 @@ namespace FlashKardid.Views
         }
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Word selectedFriend = (Word)e.SelectedItem;
-            WordPage friendPage = new WordPage();
-            friendPage.BindingContext = selectedFriend;
-            await Navigation.PushAsync(friendPage);
+            Word selectedWord = (Word)e.SelectedItem;
+            WordPage wordPage = new WordPage();
+            wordPage.BindingContext = selectedWord;
+            await Navigation.PushAsync(wordPage);
         }
-        private async void CreateDeck(object sender, EventArgs e)
+        private async void CreateWord(object sender, EventArgs e)
         {
-            Word friend = new Word();
-            WordPage friendPage = new WordPage();
-            friendPage.BindingContext = friend;
-            await Navigation.PushAsync(friendPage);
+            Word word = new Word();
+            WordPage wordPage = new WordPage();
+            wordPage.BindingContext = word;
+            await Navigation.PushAsync(wordPage);
         }
     }
 }
