@@ -20,16 +20,24 @@ namespace FlashKardid.Views
             InitializeComponent();
         }
 
-        private void CreateButton_Clicked(object sender, EventArgs e)
+        private void SaveWord(object sender, EventArgs e)
         {
-            var tableName = deckNameEntry.Text;
-            using (var db = new SQLiteConnection(App.DatabasePath))
+            var deck = (Deck)BindingContext;
+            if (!String.IsNullOrEmpty(deck.Name))
             {
-                db.CreateTable<Deck>();
-                db.CreateTable<Word>();
-
-                db.Execute($"CREATE TABLE IF NOT EXISTS {tableName} (Id INTEGER PRIMARY KEY, Word TEXT, Translation TEXT)");
+                App.DeckDatabase.SaveItem(deck);
             }
+            this.Navigation.PopAsync();
+        }
+        private void DeleteWord(object sender, EventArgs e)
+        {
+            var deck = (Deck)BindingContext;
+            App.Database.DeleteItem(deck.Id);
+            this.Navigation.PopAsync();
+        }
+        private void Cancel(object sender, EventArgs e)
+        {
+            this.Navigation.PopAsync();
         }
 
 

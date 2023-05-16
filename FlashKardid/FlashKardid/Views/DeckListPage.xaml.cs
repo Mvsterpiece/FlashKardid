@@ -23,7 +23,11 @@ namespace FlashKardid.Views
         {
             if (App.DeckDatabase != null)
             {
-                decksList.ItemsSource = App.DeckDatabase.GetItems();
+                using (var connection = new SQLiteConnection(App.DatabasePath))
+                {
+                    var decks = connection.Table<Deck>().ToList();
+                    decksList.ItemsSource = decks;
+                }
             }
             base.OnAppearing();
         }
