@@ -10,5 +10,7 @@ namespace FlashKardid.Models
         [PrimaryKey, AutoIncrement, Column("_id")]
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public string Tolgi { get; set; }
     }
 }

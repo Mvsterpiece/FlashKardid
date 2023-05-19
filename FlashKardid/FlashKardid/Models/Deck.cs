@@ -7,8 +7,10 @@ namespace FlashKardid.Models
 {
     public class Deck
     {
-        [PrimaryKey, AutoIncrement, Column("_id")]
+        [PrimaryKey]
         public int Id { get; set; }
+
         public string Name { get; set; }
     }
+
 }

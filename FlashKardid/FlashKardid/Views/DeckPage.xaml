@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Entry x:Name="deckNameEntry" Placeholder="Sisesta sõnavara nimetus" />
-            <Button Text="Lisada" Clicked="SaveWord" />
+            <Button Text="Lisada" Clicked="SaveDeck" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
