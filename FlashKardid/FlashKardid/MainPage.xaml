@@ -23,7 +23,7 @@
     <StackLayout>
         <Label Text="Flash-kardid"></Label>
         <Button Text="Sõnad" Clicked="WordList"></Button>
-        <Button Text="Sõnavarad" Clicked="CollectionWords"></Button>
+        <Button Text="Õppimine" Clicked="CollectionWords"></Button>
     </StackLayout>
 
 </ContentPage>

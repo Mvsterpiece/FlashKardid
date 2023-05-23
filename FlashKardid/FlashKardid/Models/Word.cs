@@ -12,5 +12,6 @@ namespace FlashKardid.Models
         public string Name { get; set; }
 
         public string Tolgi { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

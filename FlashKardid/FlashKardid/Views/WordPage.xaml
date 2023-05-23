@@ -24,6 +24,7 @@
         <StackLayout>
             <Label Text="Sõna"></Label>
             <Entry Text="{Binding Name}"></Entry>
+            <Entry Text="{Binding Tolgi}"></Entry>
             <StackLayout>
                 <Button Text="Salvesta" Clicked="SaveWord"></Button>
                 <Button Text="Kustuta" Clicked="DeleteWord"></Button>

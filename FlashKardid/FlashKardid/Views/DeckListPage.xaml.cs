@@ -21,29 +21,9 @@ namespace FlashKardid.Views
 
         protected override void OnAppearing()
         {
-            if (App.DeckDatabase != null)
-            {
-                using (var connection = new SQLiteConnection(App.DatabasePath))
-                {
-                    var decks = connection.Table<Deck>().ToList();
-                    decksList.ItemsSource = decks;
-                }
-            }
+
+
             base.OnAppearing();
-        }
-        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            Deck selectedDeck= (Deck)e.SelectedItem;
-            DeckPage deckPage = new DeckPage();
-            deckPage.BindingContext = selectedDeck;
-            await Navigation.PushAsync(deckPage);
-        }
-        private async void CreateDeck(object sender, EventArgs e)
-        {
-            Deck deck = new Deck();
-            DeckPage deckPage = new DeckPage();
-            deckPage.BindingContext = deck;
-            await Navigation.PushAsync(deckPage);
         }
 
 

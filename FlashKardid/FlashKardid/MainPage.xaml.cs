@@ -25,7 +25,7 @@ namespace FlashKardid
 
         private async void CollectionWords(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new DeckListPage());
+            await Navigation.PushAsync(new TrainingPage());
         }
     }
 }

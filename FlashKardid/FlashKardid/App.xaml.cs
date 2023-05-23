@@ -17,8 +17,6 @@ namespace FlashKardid
         public const string DATABASE_NAME = "words.db";
         public static WordRepository database;
 
-        public const string DECK_DATABASE_NAME = "decks.db";
-        public static DeckRepository DeckDatabase;
 
         public static WordRepository Database
         {
