@@ -22,7 +22,7 @@
             <Setter Property="Margin" Value="10,20,10,10" />
             <Setter Property="VerticalOptions" Value="CenterAndExpand" />
             <Setter Property="HorizontalOptions" Value="Center" />
-        </Style>
+        </Style>    
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
