@@ -51,12 +51,12 @@ namespace FlashKardid.Views
                 if (isTranslationCorrect)
                 {
 
-                    await DisplayAlert("Translation Correct", $"The translation of '{word.Name}' is correct.", "OK");
+                    await DisplayAlert("Tõlgi on õige", $"Sõna tõlge '{word.Name}' on õige.", "OK");
                 }
                 else
                 {
 
-                    await DisplayAlert("Translation Incorrect", $"The translation of '{word.Name}' is incorrect.", "OK");
+                    await DisplayAlert("Tõlgi on vale", $"Sõna tõlge '{word.Name}' on vale.", "OK");
                 }
             }
 
@@ -68,7 +68,7 @@ namespace FlashKardid.Views
 
         private async Task<bool> TranslateAndCheck(string word, string translation)
         {
-            string enteredTranslation = await DisplayPromptAsync("Translation", $"Translate the word '{word}' to Tolgi:");
+            string enteredTranslation = await DisplayPromptAsync("Tõlgimine", $"Tõlgi sõna: '{word}'");
 
             if (enteredTranslation != null)
             {
