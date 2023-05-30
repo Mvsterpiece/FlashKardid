@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlashKardid.Views.WordLisatPage">
-    <ContentPage.Resources>
+    <CarouselPage.Resources>
         <Style TargetType="ListView">
             <Setter Property="BackgroundColor" Value="#F5F5F5" />
             <Setter Property="Margin" Value="10,20,10,0" />
@@ -22,24 +22,26 @@
             <Setter Property="Margin" Value="10,20,10,10" />
             <Setter Property="VerticalOptions" Value="CenterAndExpand" />
             <Setter Property="HorizontalOptions" Value="Center" />
-        </Style>    
-    </ContentPage.Resources>
-    <ContentPage.Content>
-        <StackLayout>
-            <ListView x:Name="wordsList" ItemsSource="{Binding}" ItemSelected="OnItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Name}" FontSize="Medium"></Label>
-                                </StackLayout>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button Text="Lisa" Clicked="CreateWord"></Button>
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+        </Style>
+    </CarouselPage.Resources>
+    <ContentPage Title="Word List">
+        <ContentPage.Content>
+            <StackLayout>
+                <ListView x:Name="wordsList" ItemsSource="{Binding}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Name}" FontSize="Medium"></Label>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Add" Clicked="CreateWord"></Button>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+</CarouselPage>

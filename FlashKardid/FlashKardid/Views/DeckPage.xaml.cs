@@ -40,5 +40,29 @@ namespace FlashKardid.Views
         }
 
 
+        private async Task Flip(VisualElement from, VisualElement to)
+        {
+            await from.RotateYTo(-90, 300, Easing.SpringIn);
+            to.RotationY = 90;
+            to.IsVisible = true;
+            from.IsVisible = false;
+            await to.RotateYTo(0, 300, Easing.SpringOut);
+        }
+
+        private async void FlipToBack(object sender, EventArgs e)
+        {
+            var front = sender as Grid;
+            var back = front.Parent.FindByName<Grid>("BackView");
+            await Flip(front, back);
+        }
+
+        private async void FlipToFront(object sender, EventArgs e)
+        {
+            var back = sender as Grid;
+            var front = back.Parent.FindByName<Grid>("FrontView");
+            await Flip(back, front);
+        }
+
+
     }
 }

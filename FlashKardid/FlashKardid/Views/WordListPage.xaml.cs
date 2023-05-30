@@ -11,24 +11,48 @@ using Xamarin.Forms.Xaml;
 namespace FlashKardid.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WordLisatPage : ContentPage
+    public partial class WordLisatPage : CarouselPage
     {
         public WordLisatPage()
         {
             InitializeComponent();
         }
+
         protected override void OnAppearing()
         {
-            wordsList.ItemsSource = App.Database.GetItems();
             base.OnAppearing();
+            LoadWords();
         }
-        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+
+        private void LoadWords()
         {
-            Word selectedWord = (Word)e.SelectedItem;
-            WordPage wordPage = new WordPage();
-            wordPage.BindingContext = selectedWord;
-            await Navigation.PushAsync(wordPage);
+            var words = App.Database.GetItems();
+
+            Button btn = new Button
+            {
+                Text = "Lisa uue sõna",
+            };
+            btn.Clicked += CreateWord;
+
+
+            foreach (var word in words)
+            {
+                var page = new ContentPage
+                {
+                    Content = new StackLayout
+                    {
+                        Children =
+                        {
+                            new Label { Text = word.Name, FontSize = 20, HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand },
+                            btn
+                        }
+                    }
+                };
+
+                Children.Add(page);
+            }
         }
+
         private async void CreateWord(object sender, EventArgs e)
         {
             Word word = new Word();
