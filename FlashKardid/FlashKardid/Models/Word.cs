@@ -13,5 +13,7 @@ namespace FlashKardid.Models
 
         public string Tolgi { get; set; }
         public bool IsSelected { get; set; }
+        public bool IsCorrect { get; set; }
+        public bool IsAnswered { get; set; }
     }
 }

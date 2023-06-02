@@ -40,7 +40,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Start Learning" Clicked="StartLearningClicked"></Button>
+            <Button Text="Alusta treening" Clicked="StartLearningClicked"></Button>
+            <Button Text="Näita statistika" Clicked="ShowStatistics"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

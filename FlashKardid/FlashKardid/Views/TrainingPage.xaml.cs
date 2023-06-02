@@ -82,5 +82,12 @@ namespace FlashKardid.Views
 
             return false;
         }
+
+        private async void ShowStatistics(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new StatisticsPage());
+        }
+
+
     }
 }

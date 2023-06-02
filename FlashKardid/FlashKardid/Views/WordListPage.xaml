@@ -24,24 +24,4 @@
             <Setter Property="HorizontalOptions" Value="Center" />
         </Style>
     </CarouselPage.Resources>
-    <ContentPage Title="Word List">
-        <ContentPage.Content>
-            <StackLayout>
-                <ListView x:Name="wordsList" ItemsSource="{Binding}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.View>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" FontSize="Medium"></Label>
-                                    </StackLayout>
-                                </ViewCell.View>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <Button Text="Add" Clicked="CreateWord"></Button>
-            </StackLayout>
-        </ContentPage.Content>
-    </ContentPage>
 </CarouselPage>
