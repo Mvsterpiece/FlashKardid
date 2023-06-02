@@ -1,6 +1,5 @@
 ﻿using FlashKardid.Models;
 using Microcharts;
-using Microcharts.Forms;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
@@ -15,38 +14,54 @@ namespace FlashKardid.Views
     {
         private List<Word> words;
 
-        public List<ChartEntry> ChartEntries { get; set; }
-
         public StatisticsPage(List<Word> words)
         {
             InitializeComponent();
             this.words = words;
-            BindingContext = this;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             UpdateChart();
         }
 
         private void UpdateChart()
         {
-            int correctCount = words.Count(w => w.IsAnswered && w.IsCorrect);
-            int incorrectCount = words.Count(w => w.IsAnswered && !w.IsCorrect);
-
-            ChartEntries = new List<ChartEntry>
+            try
             {
-                new ChartEntry(correctCount)
-                {
-                    Color = SKColor.Parse("#9ACD32"),
-                    Label = "Õige",
-                    ValueLabel = correctCount.ToString()
-                },
-                new ChartEntry(incorrectCount)
-                {
-                    Color = SKColor.Parse("#FF4500"),
-                    Label = "Vale",
-                    ValueLabel = incorrectCount.ToString()
-                }
-            };
+                int correctCount = words.Count(w => w.IsAnswered && w.IsCorrect);
+                int incorrectCount = words.Count(w => w.IsAnswered && !w.IsCorrect);
 
-            OnPropertyChanged(nameof(ChartEntries));
+                var chartEntries = new List<ChartEntry>
+                {
+                    new ChartEntry(correctCount)
+                    {
+                        Color = SKColor.Parse("#9ACD32"),
+                        Label = "Õige",
+                        ValueLabel = correctCount.ToString()
+                    },
+                    new ChartEntry(incorrectCount)
+                    {
+                        Color = SKColor.Parse("#FF4500"),
+                        Label = "Vale",
+                        ValueLabel = incorrectCount.ToString()
+                    }
+                };
+
+                var chart = new DonutChart
+                {
+                    Entries = chartEntries,
+                    BackgroundColor = SKColor.Empty,
+                    LabelTextSize = 45
+                };
+
+                chartView.Chart = chart;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error updating chart: {ex.Message}");
+            }
         }
     }
 }
