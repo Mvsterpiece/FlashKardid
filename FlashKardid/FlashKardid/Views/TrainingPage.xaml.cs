@@ -85,8 +85,9 @@ namespace FlashKardid.Views
 
         private async void ShowStatistics(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new StatisticsPage());
+            await Navigation.PushAsync(new StatisticsPage(words));
         }
+
 
 
     }

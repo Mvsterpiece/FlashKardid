@@ -15,24 +15,22 @@ namespace FlashKardid.Views
     {
         private List<Word> words;
 
-        public StatisticsPage()
+        public List<ChartEntry> ChartEntries { get; set; }
+
+        public StatisticsPage(List<Word> words)
         {
             InitializeComponent();
-            words = App.Database.GetItems().ToList();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
+            this.words = words;
+            BindingContext = this;
             UpdateChart();
         }
 
         private void UpdateChart()
         {
-            int correctCount = words.Count(w => w.IsCorrect);
-            int incorrectCount = words.Count(w => !w.IsCorrect);
+            int correctCount = words.Count(w => w.IsAnswered && w.IsCorrect);
+            int incorrectCount = words.Count(w => w.IsAnswered && !w.IsCorrect);
 
-            var chartEntries = new List<ChartEntry>
+            ChartEntries = new List<ChartEntry>
             {
                 new ChartEntry(correctCount)
                 {
@@ -44,19 +42,11 @@ namespace FlashKardid.Views
                 {
                     Color = SKColor.Parse("#FF4500"),
                     Label = "Vale",
-                    ValueLabel = incorrectCount.ToString(),
-                    
+                    ValueLabel = incorrectCount.ToString()
                 }
             };
 
-            var chart = new DonutChart
-            {
-                Entries = chartEntries,
-                BackgroundColor = SKColor.Empty,
-                LabelTextSize = 45
-            };
-
-            chartView.Chart = chart;
+            OnPropertyChanged(nameof(ChartEntries));
         }
     }
 }
