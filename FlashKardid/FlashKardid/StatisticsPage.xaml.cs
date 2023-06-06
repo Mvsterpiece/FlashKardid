@@ -12,12 +12,12 @@ namespace FlashKardid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StatisticsPage : ContentPage
     {
-        private List<Word> words;
+        private AnswerStatistic answerStatistic;
 
-        public StatisticsPage(List<Word> words)
+        public StatisticsPage(AnswerStatistic answerStatistic)
         {
             InitializeComponent();
-            this.words = words;
+            this.answerStatistic = answerStatistic;
         }
 
         protected override void OnAppearing()
@@ -30,22 +30,22 @@ namespace FlashKardid.Views
         {
             try
             {
-                int correctCount = words.Count(w => w.IsAnswered && w.IsCorrect);
-                int incorrectCount = words.Count(w => w.IsAnswered && !w.IsCorrect);
+                int trueCount = answerStatistic.TrueCount;
+                int falseCount = answerStatistic.FalseCount;
 
                 var chartEntries = new List<ChartEntry>
                 {
-                    new ChartEntry(correctCount)
+                    new ChartEntry(trueCount)
                     {
                         Color = SKColor.Parse("#9ACD32"),
                         Label = "Õige",
-                        ValueLabel = correctCount.ToString()
+                        ValueLabel = trueCount.ToString()
                     },
-                    new ChartEntry(incorrectCount)
+                    new ChartEntry(falseCount)
                     {
                         Color = SKColor.Parse("#FF4500"),
                         Label = "Vale",
-                        ValueLabel = incorrectCount.ToString()
+                        ValueLabel = falseCount.ToString()
                     }
                 };
 
@@ -53,7 +53,8 @@ namespace FlashKardid.Views
                 {
                     Entries = chartEntries,
                     BackgroundColor = SKColor.Empty,
-                    LabelTextSize = 45
+                    LabelTextSize = 45,
+                    HoleRadius = 0.6f // Adjust the hole radius as desired
                 };
 
                 chartView.Chart = chart;

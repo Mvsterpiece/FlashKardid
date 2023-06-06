@@ -14,6 +14,8 @@ namespace FlashKardid.Views
     public partial class TrainingPage : ContentPage
     {
         private List<Word> words;
+        private int trueCount;
+        private int falseCount;
 
         public TrainingPage()
         {
@@ -44,18 +46,21 @@ namespace FlashKardid.Views
         {
             List<Word> selectedWords = words.Where(w => w.IsSelected).ToList();
 
+            trueCount = 0;
+            falseCount = 0;
+
             foreach (Word word in selectedWords)
             {
                 bool isTranslationCorrect = await TranslateAndCheck(word.Name, word.Tolgi);
 
                 if (isTranslationCorrect)
                 {
-
+                    trueCount++;
                     await DisplayAlert("Tõlgi on õige", $"Sõna tõlge '{word.Name}' on õige.", "OK");
                 }
                 else
                 {
-
+                    falseCount++;
                     await DisplayAlert("Tõlgi on vale", $"Sõna tõlge '{word.Name}' on vale.", "OK");
                 }
             }
@@ -85,10 +90,13 @@ namespace FlashKardid.Views
 
         private async void ShowStatistics(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new StatisticsPage(words));
+            var answerStatistic = new AnswerStatistic
+            {
+                TrueCount = trueCount,
+                FalseCount = falseCount
+            };
+
+            await Navigation.PushAsync(new StatisticsPage(answerStatistic));
         }
-
-
-
     }
 }

@@ -89,7 +89,7 @@ namespace FlashKardid.Views
                     Text = "Lisa uue sõna",
                     Command = new Command(AddNewWord),
                     WidthRequest = 100,
-                    HeightRequest = 40
+                    HeightRequest = 60
                 };
 
                 var changeButton = new Button
@@ -98,7 +98,7 @@ namespace FlashKardid.Views
                     CommandParameter = word,
                     Command = new Command(ChangeWord),
                     WidthRequest = 100,
-                    HeightRequest = 40
+                    HeightRequest = 60
                 };
 
                 buttonStackLayout.Children.Add(addButton);
