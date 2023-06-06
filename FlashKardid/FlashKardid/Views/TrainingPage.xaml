@@ -17,8 +17,8 @@
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="#007AFF" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="WidthRequest" Value="100" />
-            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="WidthRequest" Value="105" />
+            <Setter Property="HeightRequest" Value="60" />
             <Setter Property="Margin" Value="10,20,10,10" />
             <Setter Property="VerticalOptions" Value="CenterAndExpand" />
             <Setter Property="HorizontalOptions" Value="Center" />

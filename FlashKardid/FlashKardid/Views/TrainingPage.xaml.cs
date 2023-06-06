@@ -14,14 +14,34 @@ namespace FlashKardid.Views
     public partial class TrainingPage : ContentPage
     {
         private List<Word> words;
-        private int trueCount;
-        private int falseCount;
+        private AnswerStatistic answerStatistic;
 
         public TrainingPage()
         {
             InitializeComponent();
             words = App.Database.GetItems().ToList();
             wordsList.ItemsSource = words;
+
+            answerStatistic = new AnswerStatistic();
+
+
+            var titleLabel = new Label
+            {
+                Text = "Sõna-tõlk",
+                FontSize = 20,
+                TextColor = Color.White,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+
+            var customTitleView = new ContentView
+            {
+                Content = titleLabel,
+                Padding = new Thickness(10, 0)
+            };
+
+
+            NavigationPage.SetTitleView(this, customTitleView);
         }
 
         private async void CreateWord(object sender, EventArgs e)
@@ -46,8 +66,8 @@ namespace FlashKardid.Views
         {
             List<Word> selectedWords = words.Where(w => w.IsSelected).ToList();
 
-            trueCount = 0;
-            falseCount = 0;
+            int trueCount = 0;
+            int falseCount = 0;
 
             foreach (Word word in selectedWords)
             {
@@ -64,6 +84,9 @@ namespace FlashKardid.Views
                     await DisplayAlert("Tõlgi on vale", $"Sõna tõlge '{word.Name}' on vale.", "OK");
                 }
             }
+
+            answerStatistic.TrueCount += trueCount;
+            answerStatistic.FalseCount += falseCount; 
 
             foreach (Word word in selectedWords)
             {
@@ -90,12 +113,6 @@ namespace FlashKardid.Views
 
         private async void ShowStatistics(object sender, EventArgs e)
         {
-            var answerStatistic = new AnswerStatistic
-            {
-                TrueCount = trueCount,
-                FalseCount = falseCount
-            };
-
             await Navigation.PushAsync(new StatisticsPage(answerStatistic));
         }
     }

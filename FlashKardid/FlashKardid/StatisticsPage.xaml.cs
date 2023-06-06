@@ -18,6 +18,28 @@ namespace FlashKardid.Views
         {
             InitializeComponent();
             this.answerStatistic = answerStatistic;
+
+
+
+            var titleLabel = new Label
+            {
+                Text = "Sõna-tõlk",
+                FontSize = 20,
+                TextColor = Color.White,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+
+            var customTitleView = new ContentView
+            {
+                Content = titleLabel,
+                Padding = new Thickness(10, 0)
+            };
+
+
+            NavigationPage.SetTitleView(this, customTitleView);
+
+
         }
 
         protected override void OnAppearing()
@@ -30,22 +52,22 @@ namespace FlashKardid.Views
         {
             try
             {
-                int trueCount = answerStatistic.TrueCount;
-                int falseCount = answerStatistic.FalseCount;
-
                 var chartEntries = new List<ChartEntry>
                 {
-                    new ChartEntry(trueCount)
-                    {
-                        Color = SKColor.Parse("#9ACD32"),
-                        Label = "Õige",
-                        ValueLabel = trueCount.ToString()
-                    },
-                    new ChartEntry(falseCount)
+                    new ChartEntry(answerStatistic.FalseCount)
                     {
                         Color = SKColor.Parse("#FF4500"),
                         Label = "Vale",
-                        ValueLabel = falseCount.ToString()
+                        ValueLabelColor = SKColor.Parse("#FF4500"),
+                        ValueLabel = answerStatistic.FalseCount.ToString()
+                    },
+                    new ChartEntry(answerStatistic.TrueCount)
+                    {
+                        Color = SKColor.Parse("#9ACD32"),
+                        Label = "Õige",
+                        ValueLabelColor = SKColor.Parse("#9ACD32"),
+                        ValueLabel = answerStatistic.TrueCount.ToString(),
+
                     }
                 };
 
@@ -54,7 +76,7 @@ namespace FlashKardid.Views
                     Entries = chartEntries,
                     BackgroundColor = SKColor.Empty,
                     LabelTextSize = 45,
-                    HoleRadius = 0.6f // Adjust the hole radius as desired
+                    HoleRadius = 0.6f
                 };
 
                 chartView.Chart = chart;

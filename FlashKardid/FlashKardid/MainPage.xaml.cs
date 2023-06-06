@@ -15,6 +15,27 @@ namespace FlashKardid
         public MainPage()
         {
             InitializeComponent();
+
+
+            var titleLabel = new Label
+            {
+                Text = "Sõna-tõlk",
+                FontSize = 20,
+                TextColor = Color.White,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+
+            var customTitleView = new ContentView
+            {
+                Content = titleLabel,
+                Padding = new Thickness(10, 0)
+            };
+
+
+            NavigationPage.SetTitleView(this, customTitleView);
+
+
         }
 
 
